@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2019 Appmerce - Applications for Ecommerce
+ * http://www.appmerce.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="appmerce" translate="label" sortOrder="500">
+            <label>Appmerce</label>
+        </tab>
+        <section id="reeleezee" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Reeleezee</label>
+            <tab>appmerce</tab>
+            <resource>Appmerce_Reeleezee::config</resource>
+            <group id="settings" translate="label" type="text" sortOrder="78" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
+                <comment>
+                    <![CDATA[Extension by <a href="http://www.appmerce.com/" title="Applications for Ecommerce" style="color: #EA7601">Appmerce</a> | <a href="https://www.appmerce.com/pages/contact" title="Get support for this extension" style="color: #EA7601">Get Support</a>
+                        <br />Reeleezee API: <strong>1.24</strong>]]>
+                </comment>
+               	<field id="username" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reeleezee Username</label>
+                </field>
+               	<field id="password" translate="label" type="obscure" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reeleezee Password</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                </field>
+             	<field id="import_mode" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import Mode</label>
+                    <comment>
+                        <![CDATA[Import invoices automatically during invoice creation, or set to Manual only.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Importmode</source_model>
+                </field>
+                <!--
+             	<field id="creditmemo_mode" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import Mode for Credit Memos</label>
+                    <comment>
+                        <![CDATA[Import credit memos automatically during credit memo creation, or set to Manual only.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Importmode</source_model>
+                </field>
+                -->
+             	<field id="booking_mode" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Booking Mode</label>
+                    <comment>
+                        <![CDATA[Set to Document to create invoices in Reeleezee. Set to Receipt if you do not want to create an invoice in Reeleezee.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Bookingmode</source_model>
+                </field>
+             	<field id="invoice_status" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Invoice Concept</label>
+                    <comment>
+                        <![CDATA[Select Yes to import invoices as Concept Invoice. Choose No to import as Open Invoice.]]>
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+             	<field id="import_prices" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Import Product Prices</label>
+                    <comment>
+                        <![CDATA[Does not influence invoice prices.]]>
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+             	<field id="test_mode" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test Mode</label>
+                    <comment>
+                        <![CDATA[Test mode will NOT transfer data to Reeleezee, but will show Success or Failure messages when creating invoices through the admin backend. This is useful for testing your configuration settings.]]>
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="shipping" translate="label" type="text" sortOrder="78" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Shipping</label>
+                <comment>
+                    <![CDATA[Shipping tax settings are found under the VAT and Taxes tab.]]>
+                </comment>
+             	<field id="shipping_unit" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping Unit Code</label>
+                    <comment>
+                        <![CDATA[Select the shipping unit code.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Unitcode</source_model>
+                </field>
+               	<field id="shipping_account" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping Account Reference</label>
+                    <comment>
+                        <![CDATA[You must enter a number, e.g. 8001 (create this in Reeleezee first to book shipping costs).]]>
+                    </comment>
+                </field>
+               	<field id="shipping_sku" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping SKU</label>
+                    <comment>
+                        <![CDATA[You must enter an SKU, e.g. SHIPPINGCOST (you must create a product with this code in Reeleezee first).]]>
+                    </comment>
+                </field>
+            </group>
+            <group id="taxes" translate="label" type="text" sortOrder="78" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>VAT and Taxes</label>
+               	<field id="accountref" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Account Reference</label>
+                    <comment>
+                        <![CDATA[You must enter a default number, e.g. 8000.]]>
+                    </comment>
+                </field>
+                <!--
+             	<field id="accountref_attr" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Account Reference Product Attribute</label>
+                    <comment>
+                        <![CDATA[If you have an account reference attribute, otherwise leave to Always use default.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Attributes</source_model>
+                </field>
+                -->
+             	<field id="vatgroup_default" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Product Vat Group</label>
+                    <comment>
+                        <![CDATA[Default vat group for line items.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Vatgroup</source_model>
+                </field>
+             	<field id="vatgroup_mapping" translate="label,comment" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Vat Group Mapping</label>
+                    <comment>
+                        <![CDATA[Map the Magento product tax classes with Reeleezee.]]>
+                    </comment>
+                    <frontend_model>Appmerce\Reeleezee\Block\Adminhtml\Form\Vatgroupmapping</frontend_model>
+                    <backend_model>Appmerce\Reeleezee\Model\Source\Vatgroupmapping</backend_model>
+                </field>
+             	<field id="vatcode_default" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Line Item Vat Code</label>
+                    <comment>
+                        <![CDATA[Default vat code for line items.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Vatcode</source_model>
+                </field>
+             	<field id="vatcode_mapping" translate="label,comment" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Line Item Vat Code Mapping</label>
+                    <comment>
+                        <![CDATA[Map the Magento product tax classes and customer groups with Reeleezee.]]>
+                    </comment>
+                    <frontend_model>Appmerce\Reeleezee\Block\Adminhtml\Form\Vatcodemapping</frontend_model>
+                    <backend_model>Appmerce\Reeleezee\Model\Source\Vatcodemapping</backend_model>
+                </field>
+             	<field id="vatcode_origin" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Merchant Country</label>
+                    <comment>
+                        <![CDATA[Choose the country where your business is registered.]]>
+                    </comment>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>
+             	<field id="vatcode_world" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Non-EU Customer Vat Code</label>
+                    <comment>
+                        <![CDATA[Choose the Line Item Vat Code for customers outside the European Union.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Vatcode</source_model>
+                </field>
+            </group>
+            <group id="invoice" translate="label,comment" type="text" sortOrder="78" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Invoice</label>
+                <comment>
+                    <![CDATA[Settings for the Reeleezee invoice appearance. This does NOT change the Magento invoice.]]>
+                </comment>
+             	<field id="unit_code" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Unit Code</label>
+                    <comment>
+                        <![CDATA[Select the default unit code.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Unitcode</source_model>
+                </field>
+                <!--
+             	<field id="unit_code_attr" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Unit Code Product Attribute</label>
+                    <comment>
+                        <![CDATA[Select the unit code product attribute, otherwise leave to Always use default.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Attributes</source_model>
+                </field>
+                -->
+             	<field id="invoice_number" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Invoice Number</label>
+                    <comment>
+                        <![CDATA[Choose which number to use as the invoice number.]]>
+                    </comment>
+                    <source_model>Appmerce\Reeleezee\Model\Source\Number</source_model>
+                </field>
+             	<field id="order_number" translate="label,comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Number</label>
+                    <comment>
+                        <![CDATA[Add the Order Number to the Invoice Header.]]>
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+               	<field id="due_days" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Due Days</label>
+                    <comment>
+                        <![CDATA[You must enter a default number for the Invoice Due Days, e.g. 30.]]>
+                    </comment>
+                </field>
+               	<field id="header" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header Text</label>
+                    <comment>
+                        <![CDATA[Header text for the invoice.]]>
+                    </comment>
+                </field>
+               	<field id="bottomtext" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bottom Text</label>
+                    <comment>
+                        <![CDATA[Bottom text for the invoice (single line).]]>
+                    </comment>
+                </field>
+               	<field id="pagebreak" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pagebreak Per Items</label>
+                    <comment>
+                        <![CDATA[After how many line items do you want to insert a pagebreak? Enter 0 for no breaks.]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

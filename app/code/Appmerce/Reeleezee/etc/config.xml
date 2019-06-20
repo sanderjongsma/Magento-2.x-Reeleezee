@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <default>
+        <reeleezee>
+            <settings>
+                <password backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <import_mode>1</import_mode>
+                <booking_mode>document</booking_mode>
+                <invoice_status>1</invoice_status>
+                <import_prices>1</import_prices>
+            </settings>
+            <shipping>
+                <shipping_account>8001</shipping_account>
+                <shipping_sku>SHIPPINGCOST</shipping_sku>
+                <shipping_unit>ST</shipping_unit>
+            </shipping>
+            <surcharge>
+                <surcharge_account>8001</surcharge_account>
+                <surcharge_sku>SURCHARGE</surcharge_sku>
+                <surcharge_unit>ST</surcharge_unit>
+            </surcharge>
+            <taxes>
+                <accountref>8000</accountref>
+                <vatgroup_default>HP</vatgroup_default>
+                <vatcode_default>H</vatcode_default>
+                <vatcode_world>PW</vatcode_world>
+                <vatcode_origin>NL</vatcode_origin>
+            </taxes>
+            <invoice>
+                <due_days>14</due_days>
+                <pagebreak>0</pagebreak>
+                <unit_code>ST</unit_code>
+                <order_number>0</order_number>
+                <invoice_number>0</invoice_number>
+            </invoice>
+        </reeleezee>
+    </default>
+</config>
